@@ -1,26 +1,14 @@
 pipeline {
-    agent any
-    stages  {
-        stages('Init') {
-                steps {
-                        echo 'Hi,'
-                        echo 'we are starting the testing'
+   agent any
 
-                }
-        }
-        stages('build') {
-                steps{
-                        echo 'building simple maven project'
-
-
-                }        
-        }
-        stages('Deploy')
-                steps{
-                       echo 'Deploying in stages area'
-
-                }
-        }
-    }
-
+   stages {
+      stage('Hello') {
+         steps {
+            echo 'Hello World'
+            script {
+              result=sh(script:'ls -al', returnStdout: true)
+            }
+         }
+      }
+   }
 }
